@@ -82,6 +82,39 @@
   footer .biz div{margin-bottom:5px;}
   footer .links a{display:block;margin-bottom:8px;}
   footer .bottom{border-top:1px solid #2c302d;padding-top:20px;color:#7d837f;font-size:13px;}
+
+  /* WHY */
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .why-list{list-style:none;}
+  .why-list li{display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line);}
+  .why-list li:last-child{border:none;}
+  .why-emoji{font-size:28px;line-height:1;}
+  .why-list h4{font-size:17px;color:var(--ink);margin-bottom:3px;}
+  .why-list p{font-size:14.5px;color:var(--muted);}
+  .why-answer{background:linear-gradient(160deg,var(--yellow-1),var(--yellow-2));border-radius:24px;padding:48px 36px;text-align:center;}
+  .why-answer .big{font-size:27px;font-weight:800;color:var(--pine);line-height:1.4;margin-bottom:12px;letter-spacing:-.02em;}
+  .why-answer p{color:#4A5C50;font-size:15px;}
+  @media(max-width:760px){.why-grid{grid-template-columns:1fr;gap:32px;}}
+
+  /* WHO */
+  .who{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .who-card{border:1px solid var(--line);border-radius:20px;padding:32px 26px;background:#fff;}
+  .who-card .emoji{font-size:40px;margin-bottom:16px;}
+  .who-card h3{font-size:19px;color:var(--pine);margin-bottom:10px;}
+  .who-card p{font-size:14.5px;color:var(--muted);line-height:1.65;}
+  @media(max-width:760px){.who{grid-template-columns:1fr;}}
+
+  /* TRUST */
+  .trust-bg{background:var(--pine);}
+  .trust-bg .sec-tag{color:#E0C982;}
+  .trust-bg .sec-title{color:#fff;}
+  .trust-bg .sec-sub{color:#B7C5BC;}
+  .trust{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .trust-item{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;}
+  .trust-item .tic{width:46px;height:46px;border-radius:12px;background:rgba(247,222,150,.18);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+  .trust-item h3{font-size:16.5px;color:#fff;margin-bottom:5px;}
+  .trust-item p{font-size:14px;color:#A9BBB0;line-height:1.6;}
+  @media(max-width:760px){.trust{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -137,6 +170,26 @@
   </div>
 </header>
 
+<!-- WHY 방문진료 (공감) -->
+<section>
+  <div class="wrap">
+    <div class="sec-tag">Why Hanibee</div>
+    <h2 class="sec-title">병원 가기, 왜 이렇게 힘들까요?</h2>
+    <p class="sec-sub">거동이 불편하면 한의원 한 번 가는 것도 큰일입니다.<br/>하니비가 그 부담을 덜어드려요.</p>
+    <div class="why-grid">
+      <ul class="why-list">
+        <li><span class="why-emoji">😟</span><div><h4>모시고 가기가 너무 힘들어요</h4><p>휠체어·부축으로 이동하고 대기까지, 진료 한 번에 반나절이 걸려요.</p></div></li>
+        <li><span class="why-emoji">⏰</span><div><h4>매번 동행할 시간이 없어요</h4><p>직장·육아로 바빠 부모님 진료를 챙기기가 쉽지 않아요.</p></div></li>
+        <li><span class="why-emoji">🏥</span><div><h4>외출 자체가 부담이에요</h4><p>거동이 불편하거나 만성질환으로 장시간 외출이 어려워요.</p></div></li>
+      </ul>
+      <div class="why-answer">
+        <div class="big">그래서,<br/>한의사가 집으로 갑니다.</div>
+        <p>이동도 대기도 없이,<br/>익숙한 집에서 편안하게 진료받으세요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICE FLOW -->
 <section id="service">
   <div class="wrap">
@@ -148,6 +201,32 @@
       <div class="step"><div class="num">2</div><h3>방문 예약</h3><p>원하는 날짜·시간에 예약 요청, 한의사가 수락</p></div>
       <div class="step"><div class="num">3</div><h3>집에서 진료</h3><p>한의사가 직접 방문해 진료, 진행 상황 실시간 확인</p></div>
       <div class="step"><div class="num">4</div><h3>기록 관리</h3><p>진료기록·상담을 앱에서 한 번에 관리</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 대상별 사례 -->
+<section>
+  <div class="wrap">
+    <div class="sec-tag">For You</div>
+    <h2 class="sec-title">이런 분들이 찾고 있어요</h2>
+    <p class="sec-sub">하니비는 이동이 어려운 모든 분들의 곁에 있습니다.</p>
+    <div class="who">
+      <div class="who-card">
+        <div class="emoji">👵</div>
+        <h3>거동이 불편한 어르신</h3>
+        <p>휠체어·와상 등으로 외출이 어려운 어르신. 집에서 침·뜸·한방 물리치료 등을 편안하게 받으실 수 있어요.</p>
+      </div>
+      <div class="who-card">
+        <div class="emoji">🦴</div>
+        <h3>꾸준한 관리가 필요한 분</h3>
+        <p>만성 통증·근골격계 질환으로 정기적인 한방 관리가 필요한 분께, 규칙적인 방문진료를 연결해드려요.</p>
+      </div>
+      <div class="who-card">
+        <div class="emoji">👨‍👩‍👧</div>
+        <h3>바쁜 보호자</h3>
+        <p>직장·육아로 부모님을 모시기 어려운 가족. 앱으로 대신 예약하고 방문 상황을 실시간으로 확인하세요.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -165,6 +244,33 @@
       <div class="card"><div class="ic">👨‍👩‍👧</div><h3>가족 진료 관리</h3><p>부모님·자녀를 진료 대상자로 등록해 한 계정에서 함께 관리해요.</p></div>
       <div class="card"><div class="ic">📋</div><h3>진료기록 보관</h3><p>방문 진료 내역과 진료기록을 앱에서 안전하게 확인할 수 있어요.</p></div>
       <div class="card"><div class="ic">💬</div><h3>한의사 상담</h3><p>진료 전후 궁금한 점을 담당 한의사와 채팅으로 상담하세요.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 신뢰·전문성 -->
+<section class="trust-bg">
+  <div class="wrap">
+    <div class="sec-tag">Trust</div>
+    <h2 class="sec-title">믿고 맡길 수 있어요</h2>
+    <p class="sec-sub">소중한 가족의 건강, 검증된 한의사에게.</p>
+    <div class="trust">
+      <div class="trust-item">
+        <div class="tic">🪪</div>
+        <div><h3>면허 인증 한의사</h3><p>한의사 면허를 확인받은 한의사만 활동합니다.</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="tic">📸</div>
+        <div><h3>투명한 진료 증빙</h3><p>방문 시작·종료 시각과 사진이 기록되어, 진료가 투명하게 이뤄집니다.</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="tic">⚖️</div>
+        <div><h3>의료법을 지킵니다</h3><p>하니비는 한의원 정보를 제공하는 플랫폼으로, 특정 한의원을 추천·알선하지 않고 거리·등록순으로만 안내합니다.</p></div>
+      </div>
+      <div class="trust-item">
+        <div class="tic">🔒</div>
+        <div><h3>진료기록 안전 보관</h3><p>진료기록은 관련 법령에 따라 암호화되어 안전하게 보관됩니다.</p></div>
+      </div>
     </div>
   </div>
 </section>
