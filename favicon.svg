@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- 하니비 앱 아이콘 — 노란 배경 + 빼꼼 꿀벌 + 하니비 글씨 (벌툰 톤 참고) -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD21E"/>
+      <stop offset="100%" stop-color="#FCC200"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FBE3B8"/>
+      <stop offset="100%" stop-color="#F6D29A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 배경 -->
+  <rect x="0" y="0" width="512" height="512" rx="0" fill="url(#bg)"/>
+
+  <!-- ===== 꿀벌 (상단에서 빼꼼) ===== -->
+  <g stroke="#1A1A1A" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 더듬이 -->
+    <path d="M 210 95 Q 196 55 214 38" fill="none"/>
+    <path d="M 302 95 Q 316 55 298 38" fill="none"/>
+    <circle cx="214" cy="34" r="11" fill="#1A1A1A" stroke="none"/>
+    <circle cx="298" cy="34" r="11" fill="#1A1A1A" stroke="none"/>
+
+    <!-- 머리(검정 후드) — 위쪽 둥근 캡 -->
+    <path d="M 150 175
+             Q 150 78 256 78
+             Q 362 78 362 175
+             Z" fill="#1A1A1A"/>
+
+    <!-- 얼굴 (베이지) -->
+    <path d="M 178 168
+             Q 178 108 256 108
+             Q 334 108 334 168
+             Q 334 188 312 196
+             L 200 196
+             Q 178 188 178 168 Z" fill="url(#face)" stroke-width="0"/>
+
+    <!-- 눈 -->
+    <ellipse cx="222" cy="150" rx="13" ry="17" fill="#1A1A1A" stroke="none"/>
+    <ellipse cx="290" cy="150" rx="13" ry="17" fill="#1A1A1A" stroke="none"/>
+    <circle cx="226" cy="144" r="4" fill="#fff" stroke="none"/>
+    <circle cx="294" cy="144" r="4" fill="#fff" stroke="none"/>
+
+    <!-- 볼 홍조 -->
+    <circle cx="196" cy="172" r="12" fill="#F4A26B" stroke="none" opacity="0.85"/>
+    <circle cx="316" cy="172" r="12" fill="#F4A26B" stroke="none" opacity="0.85"/>
+
+    <!-- 입 (활짝 웃는) -->
+    <path d="M 236 176 Q 256 200 276 176 Q 256 188 236 176 Z" fill="#E8503A" stroke-width="6"/>
+
+    <!-- 양손 (난간 잡은 느낌) -->
+    <path d="M 150 210 q 16 -16 34 -4 q -8 14 -34 12 Z" fill="url(#face)" stroke-width="9"/>
+    <path d="M 362 210 q -16 -16 -34 -4 q 8 14 34 12 Z" fill="url(#face)" stroke-width="9"/>
+  </g>
+
+  <!-- ===== "하니비" 글씨 (두꺼운 검정 외곽 + 노랑) ===== -->
+  <text x="256" y="380"
+        text-anchor="middle"
+        font-family="'Gowun Dodum', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif"
+        font-size="118"
+        font-weight="700"
+        fill="#FFE680"
+        stroke="#1A1A1A"
+        stroke-width="16"
+        paint-order="stroke"
+        stroke-linejoin="round"
+        letter-spacing="-0.02em">하니비</text>
+
+  <!-- 영문 보조 -->
+  <text x="256" y="438"
+        text-anchor="middle"
+        font-family="'Apple SD Gothic Neo', sans-serif"
+        font-size="34"
+        font-weight="800"
+        fill="#1A1A1A"
+        letter-spacing="0.32em">HANIBEE</text>
+</svg>
