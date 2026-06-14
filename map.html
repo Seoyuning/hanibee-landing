@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>하니비 지도</title>
+    <!--
+      네이버 지도 프록시 페이지.
+      iOS 앱(WebView origin=capacitor://localhost)은 네이버 지도 referer 인증을 통과하지 못하므로,
+      이 페이지를 https://hanibee.co.kr 에서 iframe 으로 띄워 사용한다.
+      (네이버 클라우드 콘솔 Web 서비스 URL 에 https://hanibee.co.kr 등록 필요)
+      앱 ↔ 이 페이지는 postMessage 로 통신한다.
+    -->
+    <style>
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #eef0f2; }
+      #map { width: 100%; height: 100%; }
+      .pin-clinic, .pin-selected { position: relative; }
+      .pin-dot {
+        width: 40px; height: 40px; border-radius: 9999px; display: flex; align-items: center;
+        justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.25); border: 2px solid #fff;
+        font-size: 18px; color: #fff;
+      }
+      .pin-clinic .pin-dot { background: #C99A2E; }
+      .pin-selected .pin-dot { background: #ef4444; animation: bounce 1s infinite; }
+      .pin-tail {
+        position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
+        width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent;
+      }
+      .pin-clinic .pin-tail { border-top: 7px solid #C99A2E; }
+      .pin-selected .pin-tail { border-top: 7px solid #ef4444; }
+      .pin-current {
+        width: 22px; height: 22px; border-radius: 9999px; background: #3b82f6;
+        border: 3px solid #fff; box-shadow: 0 0 0 2px rgba(59,130,246,.35); animation: pulse 1.6s infinite;
+      }
+      .iw {
+        padding: 10px 12px; min-width: 140px; font-family: -apple-system, "Pretendard", sans-serif;
+      }
+      .iw h4 { margin: 0 0 2px; font-size: 13px; font-weight: 700; color: #1f2937; }
+      .iw p { margin: 0; font-size: 12px; color: #6b7280; }
+      @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+      @keyframes pulse { 0%{opacity:1} 50%{opacity:.5} 100%{opacity:1} }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=ojfccfrl2l&submodules=geocoder"></script>
+    <script>
+      (function () {
+        var TARGET = "*"; // 부모(capacitor://localhost)로 회신
+        function send(msg) {
+          try { window.parent.postMessage(msg, TARGET); } catch (e) {}
+        }
+
+        var map = null;
+        var clinicMarkers = [];
+        var selectedMarker = null;
+        var currentMarker = null;
+        var openInfoWindow = null;
+        var didFitBounds = false;
+        var pending = {}; // 초기화 전에 도착한 명령 버퍼
+
+        // 네이버 지도 인증 실패 → 부모에게 알림
+        window.navermap_authFailure = function () {
+          send({ source: "hanibee-map", type: "authFailure", origin: location.origin });
+        };
+
+        function clinicIcon() {
+          return {
+            content:
+              '<div class="pin-clinic"><div class="pin-dot">🏥</div><div class="pin-tail"></div></div>',
+            anchor: new naver.maps.Point(20, 45),
+          };
+        }
+        function selectedIcon() {
+          return {
+            content:
+              '<div class="pin-selected"><div class="pin-dot">📍</div><div class="pin-tail"></div></div>',
+            anchor: new naver.maps.Point(20, 45),
+          };
+        }
+        function currentIcon() {
+          return {
+            content: '<div class="pin-current"></div>',
+            anchor: new naver.maps.Point(11, 11),
+          };
+        }
+
+        function clearClinicMarkers() {
+          clinicMarkers.forEach(function (m) { m.setMap(null); });
+          clinicMarkers = [];
+        }
+
+        function setMarkers(markers) {
+          clearClinicMarkers();
+          if (openInfoWindow) { openInfoWindow.close(); openInfoWindow = null; }
+          (markers || []).forEach(function (d) {
+            var marker = new naver.maps.Marker({
+              position: new naver.maps.LatLng(d.lat, d.lng),
+              map: map,
+              title: d.title || "",
+              icon: clinicIcon(),
+            });
+            var info = null;
+            if (d.info) {
+              info = new naver.maps.InfoWindow({
+                content: '<div class="iw"><h4>' + esc(d.title) + '</h4><p>' + esc(d.info) + "</p></div>",
+                backgroundColor: "#fff",
+                borderColor: "#ddd",
+                borderWidth: 1,
+              });
+            }
+            naver.maps.Event.addListener(marker, "click", function () {
+              if (info) {
+                if (info.getMap()) { info.close(); openInfoWindow = null; }
+                else { if (openInfoWindow) openInfoWindow.close(); info.open(map, marker); openInfoWindow = info; }
+              }
+              send({ source: "hanibee-map", type: "markerClick", id: d.id });
+            });
+            clinicMarkers.push(marker);
+          });
+
+          if ((markers || []).length > 1 && !didFitBounds) {
+            var lats = markers.map(function (m) { return m.lat; });
+            var lngs = markers.map(function (m) { return m.lng; });
+            var bounds = new naver.maps.LatLngBounds(
+              new naver.maps.LatLng(Math.min.apply(null, lats), Math.min.apply(null, lngs)),
+              new naver.maps.LatLng(Math.max.apply(null, lats), Math.max.apply(null, lngs))
+            );
+            map.fitBounds(bounds, { top: 50, right: 50, bottom: 50, left: 50 });
+            didFitBounds = true;
+          }
+        }
+
+        function setSelected(pos) {
+          if (selectedMarker) { selectedMarker.setMap(null); selectedMarker = null; }
+          if (pos) {
+            selectedMarker = new naver.maps.Marker({
+              position: new naver.maps.LatLng(pos.lat, pos.lng),
+              map: map,
+              icon: selectedIcon(),
+            });
+          }
+        }
+
+        function setCurrentLocation(loc) {
+          if (currentMarker) { currentMarker.setMap(null); currentMarker = null; }
+          if (loc) {
+            currentMarker = new naver.maps.Marker({
+              position: new naver.maps.LatLng(loc.lat, loc.lng),
+              map: map,
+              icon: currentIcon(),
+            });
+          }
+        }
+
+        function esc(s) {
+          return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+          });
+        }
+
+        function emitBounds() {
+          if (!map) return;
+          var b = map.getBounds();
+          var sw = b.getSW();
+          var ne = b.getNE();
+          send({
+            source: "hanibee-map", type: "boundsChanged",
+            bounds: { minLat: sw.lat(), maxLat: ne.lat(), minLng: sw.lng(), maxLng: ne.lng() },
+          });
+        }
+
+        function doGeocode(reqId, query) {
+          if (!naver.maps.Service) { send({ source: "hanibee-map", type: "geocodeResult", reqId: reqId, result: null }); return; }
+          naver.maps.Service.geocode({ query: query }, function (status, response) {
+            var result = null;
+            if (status === 200) {
+              var items = (response && response.v2 && response.v2.addresses) || [];
+              if (items.length) {
+                var lat = parseFloat(items[0].y), lng = parseFloat(items[0].x);
+                if (!isNaN(lat) && !isNaN(lng)) result = { lat: lat, lng: lng };
+              }
+            }
+            send({ source: "hanibee-map", type: "geocodeResult", reqId: reqId, result: result });
+          });
+        }
+
+        function doReverseGeocode(reqId, lat, lng) {
+          if (!naver.maps.Service) { send({ source: "hanibee-map", type: "reverseGeocodeResult", reqId: reqId, address: null }); return; }
+          naver.maps.Service.reverseGeocode(
+            {
+              coords: new naver.maps.LatLng(lat, lng),
+              orders: [naver.maps.Service.OrderType.ROAD_ADDR, naver.maps.Service.OrderType.ADDR].join(","),
+            },
+            function (status, response) {
+              var addr = null;
+              if (status === 200) {
+                var r = response && response.v2;
+                addr = (r && (r.roadAddress || (r.address && (r.address.roadAddress || r.address.jibunAddress)))) || null;
+              }
+              send({ source: "hanibee-map", type: "reverseGeocodeResult", reqId: reqId, address: addr });
+            }
+          );
+        }
+
+        function initMap(cfg) {
+          var center = cfg.center || { lat: 37.5665, lng: 126.978 };
+          map = new naver.maps.Map("map", {
+            center: new naver.maps.LatLng(center.lat, center.lng),
+            zoom: cfg.zoom || 14,
+            draggable: true, pinchZoom: true, scrollWheel: true,
+            zoomControl: true,
+            zoomControlOptions: { position: naver.maps.Position.TOP_RIGHT },
+          });
+
+          naver.maps.Event.addListener(map, "click", function (e) {
+            send({ source: "hanibee-map", type: "click", lat: e.coord.lat(), lng: e.coord.lng() });
+          });
+          naver.maps.Event.addListener(map, "idle", emitBounds);
+
+          if (cfg.markers) setMarkers(cfg.markers);
+          if (cfg.selectedPosition) setSelected(cfg.selectedPosition);
+          if (cfg.currentLocation) setCurrentLocation(cfg.currentLocation);
+
+          send({ source: "hanibee-map", type: "ready" });
+          setTimeout(emitBounds, 300);
+
+          // 초기화 전에 쌓인 명령 처리
+          Object.keys(pending).forEach(function (k) { /* no-op; commands replay below */ });
+        }
+
+        function handle(data) {
+          if (!data || data.source !== "hanibee-app") return;
+          switch (data.type) {
+            case "init":
+              if (!map) initMap(data);
+              return;
+            case "setMarkers": if (map) setMarkers(data.markers); return;
+            case "setCenter":
+              if (map && data.center) map.setCenter(new naver.maps.LatLng(data.center.lat, data.center.lng));
+              return;
+            case "setSelected": if (map) setSelected(data.selectedPosition); return;
+            case "setCurrentLocation": if (map) setCurrentLocation(data.location); return;
+            case "geocode": doGeocode(data.reqId, data.query); return;
+            case "reverseGeocode": doReverseGeocode(data.reqId, data.lat, data.lng); return;
+          }
+        }
+
+        window.addEventListener("message", function (e) { handle(e.data); });
+
+        // 부모에게 "로드 완료, init 보내달라" 신호
+        function announce() {
+          if (window.naver && window.naver.maps) {
+            send({ source: "hanibee-map", type: "loaded" });
+          } else {
+            setTimeout(announce, 100);
+          }
+        }
+        announce();
+      })();
+    </script>
+  </body>
+</html>
