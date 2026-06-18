@@ -176,7 +176,7 @@ footer .bottom{border-top:1px solid #2c302d;padding-top:20px;color:#7d837f;font-
 .sent-banner{max-width:680px;margin:0 auto 28px;background:#EAF5EF;border:1px solid #BDE0CE;color:#1f5b3e;border-radius:14px;padding:18px 22px;font-size:15px;font-weight:600;text-align:center;}
 
 /* ===== 풀스크린 스크롤 스냅 (홈에서만) ===== */
-html:has(body.snap-home){ scroll-snap-type: y mandatory; }
+html:has(body.snap-home){ scroll-snap-type: y proximity; }
 .snap{
   height: 100vh; height: 100svh;          /* 화면 높이에 정확히 맞춤 */
   box-sizing: border-box;                  /* 패딩을 높이 안에 포함 → 잘림 방지 */
