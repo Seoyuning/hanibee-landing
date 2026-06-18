@@ -15,73 +15,50 @@
   :root{
     --pine:#234434; --pine-soft:#2E6B52;
     --yellow-1:#FBEAB3; --yellow-2:#F4D680; --cream:#FCEFD2;
-    --ink:#2A2622; --muted:#5C6660; --line:#E8E2D2;
-    --ochre:#B08A3E;
+    --ink:#2A2622; --muted:#5C6660; --line:#ECEAE2;
+    --ochre:#B08A3E; --bg-soft:#FAFAF7;
   }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;}
   html{scroll-behavior:smooth;}
   body{color:var(--ink);line-height:1.6;background:#fff;-webkit-font-smoothing:antialiased;}
   a{text-decoration:none;color:inherit;}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
-  .btn{display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 26px;border-radius:14px;font-weight:700;font-size:16px;transition:transform .15s,opacity .15s;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  section{padding:84px 0;scroll-margin-top:76px;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 26px;border-radius:14px;font-weight:700;font-size:16px;transition:transform .15s,opacity .15s,box-shadow .15s;}
   .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--pine);color:#fff;}
-  .btn-ghost{background:rgba(35,68,52,.08);color:var(--pine);}
+  .btn-primary{background:var(--pine);color:#fff;box-shadow:0 6px 18px rgba(35,68,52,.18);}
+  .btn-ghost{background:rgba(35,68,52,.07);color:var(--pine);}
 
-  /* NAV */
-  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--pine);letter-spacing:-.02em;}
-  .nav-cta{height:42px;padding:0 18px;border-radius:11px;background:var(--pine);color:#fff;font-weight:700;font-size:14px;display:inline-flex;align-items:center;}
+  /* NAV — 좌:로고 / 중앙:메뉴 / 우:로그인 */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  nav .nav-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:66px;}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:20px;color:var(--pine);letter-spacing:-.02em;justify-self:start;}
+  .nav-menu{display:flex;gap:34px;justify-self:center;}
+  .nav-menu a{font-size:15.5px;font-weight:600;color:#3A3A36;padding:6px 2px;position:relative;transition:color .15s;}
+  .nav-menu a:hover{color:var(--pine);}
+  .nav-menu a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--yellow-2);transition:width .2s;}
+  .nav-menu a:hover::after{width:100%;}
+  .nav-login{justify-self:end;height:42px;padding:0 20px;border-radius:11px;background:var(--pine);color:#fff;font-weight:700;font-size:14.5px;display:inline-flex;align-items:center;transition:opacity .15s;}
+  .nav-login:hover{opacity:.9;}
+  @media(max-width:860px){
+    nav .nav-inner{grid-template-columns:1fr auto;}
+    .nav-menu{display:none;}
+  }
 
   /* HERO */
-  .hero{background:linear-gradient(160deg,var(--yellow-1) 0%,var(--yellow-2) 100%);padding:84px 0 96px;text-align:center;position:relative;overflow:hidden;}
+  .hero{background:linear-gradient(160deg,var(--yellow-1) 0%,var(--yellow-2) 100%);padding:88px 0 100px;text-align:center;position:relative;overflow:hidden;}
   .hero .badge{display:inline-block;background:rgba(35,68,52,.1);color:var(--pine);font-weight:700;font-size:13px;letter-spacing:.04em;padding:7px 14px;border-radius:999px;margin-bottom:24px;}
-  .hero h1{font-size:46px;font-weight:800;color:var(--pine);letter-spacing:-.03em;line-height:1.25;margin-bottom:18px;}
+  .hero h1{font-size:47px;font-weight:800;color:var(--pine);letter-spacing:-.03em;line-height:1.24;margin-bottom:18px;}
   .hero p{font-size:18px;color:#4A5C50;max-width:520px;margin:0 auto 34px;}
   .hero .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
   .hero-mark{margin-bottom:28px;}
   @media(max-width:600px){.hero h1{font-size:33px;}.hero p{font-size:16px;}}
 
-  /* SECTION */
-  section{padding:88px 0;}
+  /* SECTION HEADINGS */
   .sec-tag{text-align:center;color:var(--ochre);font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;}
   .sec-title{text-align:center;font-size:32px;font-weight:800;color:var(--pine);letter-spacing:-.02em;margin-bottom:14px;}
   .sec-sub{text-align:center;color:var(--muted);font-size:16px;max-width:560px;margin:0 auto 52px;}
   @media(max-width:600px){.sec-title{font-size:26px;}}
-
-  /* FLOW */
-  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-  .flow .step{text-align:center;padding:28px 16px;border-radius:18px;background:var(--cream);}
-  .flow .num{width:40px;height:40px;border-radius:50%;background:var(--pine);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
-  .flow .step h3{font-size:17px;color:var(--pine);margin-bottom:6px;}
-  .flow .step p{font-size:14px;color:var(--muted);}
-  @media(max-width:760px){.flow{grid-template-columns:repeat(2,1fr);}}
-
-  /* FEATURES */
-  .feat-bg{background:#FAF7EF;}
-  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 24px;}
-  .card .ic{width:48px;height:48px;border-radius:13px;background:linear-gradient(160deg,var(--yellow-1),var(--yellow-2));display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;}
-  .card h3{font-size:18px;color:var(--pine);margin-bottom:8px;}
-  .card p{font-size:14.5px;color:var(--muted);}
-  @media(max-width:760px){.feats{grid-template-columns:1fr;}}
-
-  /* DOWNLOAD CTA */
-  .download{background:linear-gradient(160deg,var(--pine) 0%,#1a3528 100%);color:#fff;text-align:center;}
-  .download h2{font-size:34px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:14px;}
-  .download p{color:#C9D6CE;font-size:17px;margin-bottom:32px;}
-  .btn-store{background:var(--yellow-2);color:var(--pine);}
-  .soon{color:#A9BBB0;font-size:13px;margin-top:16px;}
-
-  /* CONTACT / FOOTER */
-  footer{background:#1a1d1b;color:#B7BDB9;padding:56px 0 40px;font-size:14px;}
-  footer .cols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;margin-bottom:36px;}
-  footer h4{color:#fff;font-size:15px;margin-bottom:14px;font-weight:700;}
-  footer a:hover{color:#fff;}
-  footer .biz div{margin-bottom:5px;}
-  footer .links a{display:block;margin-bottom:8px;}
-  footer .bottom{border-top:1px solid #2c302d;padding-top:20px;color:#7d837f;font-size:13px;}
 
   /* WHY */
   .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
@@ -96,6 +73,14 @@
   .why-answer p{color:#4A5C50;font-size:15px;}
   @media(max-width:760px){.why-grid{grid-template-columns:1fr;gap:32px;}}
 
+  /* FLOW */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .flow .step{text-align:center;padding:28px 16px;border-radius:18px;background:var(--cream);}
+  .flow .num{width:40px;height:40px;border-radius:50%;background:var(--pine);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+  .flow .step h3{font-size:17px;color:var(--pine);margin-bottom:6px;}
+  .flow .step p{font-size:14px;color:var(--muted);}
+  @media(max-width:760px){.flow{grid-template-columns:repeat(2,1fr);}}
+
   /* WHO */
   .who{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   .who-card{border:1px solid var(--line);border-radius:20px;padding:32px 26px;background:#fff;}
@@ -103,6 +88,16 @@
   .who-card h3{font-size:19px;color:var(--pine);margin-bottom:10px;}
   .who-card p{font-size:14.5px;color:var(--muted);line-height:1.65;}
   @media(max-width:760px){.who{grid-template-columns:1fr;}}
+
+  /* FEATURES */
+  .feat-bg{background:var(--bg-soft);}
+  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 24px;transition:box-shadow .18s,transform .18s;}
+  .card:hover{box-shadow:0 10px 30px rgba(35,68,52,.08);transform:translateY(-3px);}
+  .card .ic{width:48px;height:48px;border-radius:13px;background:linear-gradient(160deg,var(--yellow-1),var(--yellow-2));display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;}
+  .card h3{font-size:18px;color:var(--pine);margin-bottom:8px;}
+  .card p{font-size:14.5px;color:var(--muted);}
+  @media(max-width:760px){.feats{grid-template-columns:1fr;}}
 
   /* TRUST */
   .trust-bg{background:var(--pine);}
@@ -115,15 +110,59 @@
   .trust-item h3{font-size:16.5px;color:#fff;margin-bottom:5px;}
   .trust-item p{font-size:14px;color:#A9BBB0;line-height:1.6;}
   @media(max-width:760px){.trust{grid-template-columns:1fr;}}
+
+  /* NOTICE */
+  .notice-list{max-width:780px;margin:0 auto;border-top:2px solid var(--pine);}
+  .notice-row{display:flex;gap:24px;align-items:baseline;padding:22px 6px;border-bottom:1px solid var(--line);}
+  .notice-row .date{color:var(--ochre);font-weight:700;font-size:14px;white-space:nowrap;min-width:92px;}
+  .notice-row .ttl{color:var(--ink);font-size:16.5px;font-weight:600;}
+  .notice-row .tag{font-size:12px;font-weight:700;color:var(--pine);background:rgba(244,214,128,.4);padding:3px 9px;border-radius:7px;margin-right:10px;}
+  @media(max-width:600px){.notice-row{flex-direction:column;gap:6px;}}
+
+  /* SUPPORT */
+  .support-bg{background:var(--bg-soft);}
+  .support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:920px;margin:0 auto;}
+  .support-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 26px;text-align:center;}
+  .support-card .ic{width:54px;height:54px;border-radius:15px;background:linear-gradient(160deg,var(--yellow-1),var(--yellow-2));display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px;}
+  .support-card h3{font-size:17px;color:var(--pine);margin-bottom:8px;}
+  .support-card p{font-size:14.5px;color:var(--muted);line-height:1.7;}
+  .support-card a{color:var(--pine-soft);font-weight:700;}
+  @media(max-width:760px){.support-grid{grid-template-columns:1fr;}}
+
+  /* FAQ */
+  .faq{max-width:780px;margin:0 auto;}
+  .faq-item{border:1px solid var(--line);border-radius:14px;margin-bottom:12px;background:#fff;overflow:hidden;}
+  .faq-item summary{padding:20px 24px;font-weight:700;color:var(--pine);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:16px;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';font-size:24px;color:var(--ochre);font-weight:400;line-height:1;}
+  .faq-item[open] summary::after{content:'\2212';}
+  .faq-item[open] summary{border-bottom:1px solid var(--line);}
+  .faq-a{padding:18px 24px 22px;color:var(--muted);font-size:14.5px;line-height:1.75;}
+
+  /* DOWNLOAD CTA */
+  .download{background:linear-gradient(160deg,var(--pine) 0%,#1a3528 100%);color:#fff;text-align:center;}
+  .download h2{font-size:34px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:14px;}
+  .download p{color:#C9D6CE;font-size:17px;margin-bottom:32px;}
+  .btn-store{background:var(--yellow-2);color:var(--pine);}
+  .soon{color:#A9BBB0;font-size:13px;margin-top:16px;}
+
+  /* FOOTER */
+  footer{background:#1a1d1b;color:#B7BDB9;padding:56px 0 40px;font-size:14px;}
+  footer .cols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;margin-bottom:36px;}
+  footer h4{color:#fff;font-size:15px;margin-bottom:14px;font-weight:700;}
+  footer a:hover{color:#fff;}
+  footer .biz div{margin-bottom:5px;}
+  footer .links a{display:block;margin-bottom:8px;}
+  footer .bottom{border-top:1px solid #2c302d;padding-top:20px;color:#7d837f;font-size:13px;}
 </style>
 </head>
-<body>
+<body id="top">
 
 <!-- NAV -->
 <nav>
-  <div class="wrap">
-    <div class="brand">
-      <svg width="32" height="32" viewBox="148 36 216 216" aria-hidden>
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <svg width="30" height="30" viewBox="148 36 216 216" aria-hidden>
         <rect x="150" y="38" width="212" height="212" rx="54" fill="#F7DE96"/>
         <g transform="translate(0 38)" stroke="#2A2622" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M 218 92 Q 206 56 222 42" fill="none"/><path d="M 294 92 Q 306 56 290 42" fill="none"/>
@@ -137,8 +176,14 @@
         </g>
       </svg>
       하니비
+    </a>
+    <div class="nav-menu">
+      <a href="#service">서비스 소개</a>
+      <a href="#notice">공지사항</a>
+      <a href="#support">고객센터</a>
+      <a href="#faq">자주 묻는 질문</a>
     </div>
-    <a href="#download" class="nav-cta">앱 다운로드</a>
+    <a href="#download" class="nav-login">로그인</a>
   </div>
 </nav>
 
@@ -170,8 +215,8 @@
   </div>
 </header>
 
-<!-- WHY 방문진료 (공감) -->
-<section>
+<!-- 서비스 소개: WHY -->
+<section id="service">
   <div class="wrap">
     <div class="sec-tag">Why Hanibee</div>
     <h2 class="sec-title">병원 가기, 왜 이렇게 힘들까요?</h2>
@@ -191,7 +236,7 @@
 </section>
 
 <!-- SERVICE FLOW -->
-<section id="service">
+<section>
   <div class="wrap">
     <div class="sec-tag">How it works</div>
     <h2 class="sec-title">이렇게 이용하세요</h2>
@@ -205,28 +250,16 @@
   </div>
 </section>
 
-<!-- 대상별 사례 -->
+<!-- 대상별 -->
 <section>
   <div class="wrap">
     <div class="sec-tag">For You</div>
     <h2 class="sec-title">이런 분들이 찾고 있어요</h2>
     <p class="sec-sub">하니비는 이동이 어려운 모든 분들의 곁에 있습니다.</p>
     <div class="who">
-      <div class="who-card">
-        <div class="emoji">👵</div>
-        <h3>거동이 불편한 어르신</h3>
-        <p>휠체어·와상 등으로 외출이 어려운 어르신. 집에서 침·뜸·한방 물리치료 등을 편안하게 받으실 수 있어요.</p>
-      </div>
-      <div class="who-card">
-        <div class="emoji">🦴</div>
-        <h3>꾸준한 관리가 필요한 분</h3>
-        <p>만성 통증·근골격계 질환으로 정기적인 한방 관리가 필요한 분께, 규칙적인 방문진료를 연결해드려요.</p>
-      </div>
-      <div class="who-card">
-        <div class="emoji">👨‍👩‍👧</div>
-        <h3>바쁜 보호자</h3>
-        <p>직장·육아로 부모님을 모시기 어려운 가족. 앱으로 대신 예약하고 방문 상황을 실시간으로 확인하세요.</p>
-      </div>
+      <div class="who-card"><div class="emoji">👵</div><h3>거동이 불편한 어르신</h3><p>휠체어·와상 등으로 외출이 어려운 어르신. 집에서 침·뜸·한방 물리치료 등을 편안하게 받으실 수 있어요.</p></div>
+      <div class="who-card"><div class="emoji">🦴</div><h3>꾸준한 관리가 필요한 분</h3><p>만성 통증·근골격계 질환으로 정기적인 한방 관리가 필요한 분께, 규칙적인 방문진료를 연결해드려요.</p></div>
+      <div class="who-card"><div class="emoji">👨‍👩‍👧</div><h3>바쁜 보호자</h3><p>직장·육아로 부모님을 모시기 어려운 가족. 앱으로 대신 예약하고 방문 상황을 실시간으로 확인하세요.</p></div>
     </div>
   </div>
 </section>
@@ -248,55 +281,106 @@
   </div>
 </section>
 
-<!-- 한의사를 위한 기능 (EMR·진료기록부) -->
+<!-- 한의사를 위한 -->
 <section>
   <div class="wrap">
     <div class="sec-tag">For Doctors</div>
     <h2 class="sec-title">한의사를 위한 하니비</h2>
     <p class="sec-sub">진료부터 청구 서류까지, 방문진료에 필요한 모든 것을 한 앱에서.</p>
     <div class="feats">
-      <div class="card">
-        <div class="ic">📝</div>
-        <h3>전자 진료기록 (EMR)</h3>
-        <p>방문 진료 내용을 앱에서 바로 작성·저장하고, 환자별 진료 이력을 한눈에 관리할 수 있어요.</p>
-      </div>
-      <div class="card">
-        <div class="ic">📄</div>
-        <h3>진료기록부·점검서식 자동 생성</h3>
-        <p>진료기록을 입력하면 진료기록부와 일차의료 방문진료 점검서식(별지 제4호)이 PDF로 자동 생성돼, 청구 서류 작성 부담을 덜어드려요.</p>
-      </div>
-      <div class="card">
-        <div class="ic">📊</div>
-        <h3>환자·일정·수가 관리</h3>
-        <p>내 환자 목록, 방문 일정, 본인부담금 자동 산출까지 — 진료 외 행정 업무를 간편하게 처리해요.</p>
-      </div>
+      <div class="card"><div class="ic">📝</div><h3>전자 진료기록 (EMR)</h3><p>방문 진료 내용을 앱에서 바로 작성·저장하고, 환자별 진료 이력을 한눈에 관리할 수 있어요.</p></div>
+      <div class="card"><div class="ic">📄</div><h3>진료기록부·점검서식 자동 생성</h3><p>진료기록을 입력하면 진료기록부와 일차의료 방문진료 점검서식(별지 제4호)이 PDF로 자동 생성돼, 청구 서류 작성 부담을 덜어드려요.</p></div>
+      <div class="card"><div class="ic">📊</div><h3>환자·일정·수가 관리</h3><p>내 환자 목록, 방문 일정, 본인부담금 자동 산출까지 — 진료 외 행정 업무를 간편하게 처리해요.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 신뢰·전문성 -->
+<!-- 신뢰 -->
 <section class="trust-bg">
   <div class="wrap">
     <div class="sec-tag">Trust</div>
     <h2 class="sec-title">믿고 맡길 수 있어요</h2>
     <p class="sec-sub">소중한 가족의 건강, 검증된 한의사에게.</p>
     <div class="trust">
-      <div class="trust-item">
-        <div class="tic">🪪</div>
-        <div><h3>면허 인증 한의사</h3><p>한의사 면허를 확인받은 한의사만 활동합니다.</p></div>
+      <div class="trust-item"><div class="tic">🪪</div><div><h3>면허 인증 한의사</h3><p>한의사 면허를 확인받은 한의사만 활동합니다.</p></div></div>
+      <div class="trust-item"><div class="tic">📸</div><div><h3>투명한 진료 증빙</h3><p>방문 시작·종료 시각과 사진이 기록되어, 진료가 투명하게 이뤄집니다.</p></div></div>
+      <div class="trust-item"><div class="tic">⚖️</div><div><h3>의료법을 지킵니다</h3><p>하니비는 한의원 정보를 제공하는 플랫폼으로, 특정 한의원을 추천·알선하지 않고 거리·등록순으로만 안내합니다.</p></div></div>
+      <div class="trust-item"><div class="tic">🔒</div><div><h3>진료기록 안전 보관</h3><p>진료기록은 관련 법령에 따라 암호화되어 안전하게 보관됩니다.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 공지사항 -->
+<section id="notice">
+  <div class="wrap">
+    <div class="sec-tag">Notice</div>
+    <h2 class="sec-title">공지사항</h2>
+    <p class="sec-sub">하니비의 새로운 소식을 전해드립니다.</p>
+    <div class="notice-list">
+      <div class="notice-row"><span class="date">2026.06.18</span><span class="ttl"><span class="tag">안내</span>하니비 정식 출시 준비 안내</span></div>
+      <div class="notice-row"><span class="date">2026.06.04</span><span class="ttl"><span class="tag">업데이트</span>방문진료 매칭 서비스 업데이트 안내</span></div>
+      <div class="notice-row"><span class="date">2026.06.02</span><span class="ttl"><span class="tag">소식</span>하니비 서비스 오픈</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 고객센터 -->
+<section id="support" class="support-bg">
+  <div class="wrap">
+    <div class="sec-tag">Support</div>
+    <h2 class="sec-title">고객센터</h2>
+    <p class="sec-sub">궁금한 점이 있으신가요? 언제든 편하게 문의해주세요.</p>
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="ic">✉️</div>
+        <h3>이메일 문의</h3>
+        <p><a href="mailto:hanibee7777@gmail.com">hanibee7777@gmail.com</a><br/>가장 빠르게 답변드려요.</p>
       </div>
-      <div class="trust-item">
-        <div class="tic">📸</div>
-        <div><h3>투명한 진료 증빙</h3><p>방문 시작·종료 시각과 사진이 기록되어, 진료가 투명하게 이뤄집니다.</p></div>
+      <div class="support-card">
+        <div class="ic">🕙</div>
+        <h3>운영 시간</h3>
+        <p>평일 10:00 – 18:00<br/>주말·공휴일 휴무</p>
       </div>
-      <div class="trust-item">
-        <div class="tic">⚖️</div>
-        <div><h3>의료법을 지킵니다</h3><p>하니비는 한의원 정보를 제공하는 플랫폼으로, 특정 한의원을 추천·알선하지 않고 거리·등록순으로만 안내합니다.</p></div>
+      <div class="support-card">
+        <div class="ic">💬</div>
+        <h3>앱 내 1:1 문의</h3>
+        <p>앱의 <b>고객지원</b> 메뉴에서<br/>1:1 문의를 남기실 수 있어요.</p>
       </div>
-      <div class="trust-item">
-        <div class="tic">🔒</div>
-        <div><h3>진료기록 안전 보관</h3><p>진료기록은 관련 법령에 따라 암호화되어 안전하게 보관됩니다.</p></div>
-      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 자주 묻는 질문 -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-tag">FAQ</div>
+    <h2 class="sec-title">자주 묻는 질문</h2>
+    <p class="sec-sub">하니비 이용 전 궁금한 점을 모았어요.</p>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>방문진료는 어떻게 신청하나요?</summary>
+        <div class="faq-a">하니비 앱을 설치한 뒤, 우리 동네 방문진료 한의사를 거리순으로 확인하고 원하는 날짜·시간에 예약을 요청하면 됩니다. 한의사가 일정을 확인하고 수락하면 예약이 확정돼요.</div>
+      </details>
+      <details class="faq-item">
+        <summary>어떤 분들이 이용할 수 있나요?</summary>
+        <div class="faq-a">거동이 불편한 어르신, 만성 통증·근골격계 질환으로 꾸준한 한방 관리가 필요한 분, 그리고 부모님을 직접 모시기 어려운 보호자분들이 주로 이용하세요. 보호자가 가족을 진료 대상자로 등록해 대신 예약할 수도 있습니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>진료 비용은 어떻게 되나요?</summary>
+        <div class="faq-a">방문진료 비용은 한의사·진료 내용에 따라 다르며, 앱에서 한의사별 방문비를 미리 확인할 수 있습니다. 건강보험이 적용되는 항목은 본인부담금이 자동으로 산출되어 안내됩니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>어느 지역에서 이용할 수 있나요?</summary>
+        <div class="faq-a">하니비는 방문진료에 등록한 한의사가 있는 지역에서 이용하실 수 있습니다. 앱에서 내 주변 한의사를 확인해 이용 가능 여부를 바로 알 수 있어요. 서비스 지역은 점차 확대될 예정입니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>한의사는 믿을 수 있나요?</summary>
+        <div class="faq-a">하니비는 한의사 면허를 확인받은 한의사만 활동할 수 있습니다. 또한 방문 시작·종료 시각과 사진이 기록되어 진료가 투명하게 이루어집니다.</div>
+      </details>
+      <details class="faq-item">
+        <summary>진료기록은 어디서 확인하나요?</summary>
+        <div class="faq-a">방문 진료 내역과 진료기록은 하니비 앱에서 언제든 확인할 수 있습니다. 진료기록은 관련 법령에 따라 암호화되어 안전하게 보관됩니다.</div>
+      </details>
     </div>
   </div>
 </section>
@@ -307,7 +391,7 @@
     <h2>지금 하니비를 시작하세요</h2>
     <p>집에서 편안하게 받는 한방 방문진료, 하니비와 함께하세요.</p>
     <a href="#" class="btn btn-store">📱 Google Play에서 다운로드</a>
-    <div class="soon">* 현재 출시 준비 중입니다. 곧 만나보실 수 있어요.</div>
+    <div class="soon">* 현재 출시 준비 중입니다. 앱 설치 후 로그인하실 수 있어요.</div>
   </div>
 </section>
 
@@ -324,7 +408,9 @@
       <div class="links">
         <h4>바로가기</h4>
         <a href="#service">서비스 소개</a>
-        <a href="#download">앱 다운로드</a>
+        <a href="#notice">공지사항</a>
+        <a href="#support">고객센터</a>
+        <a href="#faq">자주 묻는 질문</a>
         <a href="/privacy.html">개인정보 처리방침</a>
         <a href="/terms.html">이용약관</a>
       </div>
