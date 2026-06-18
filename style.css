@@ -190,15 +190,18 @@ html:has(body.snap-home){ scroll-snap-type: y proximity; }
 .snap .show-text p{ font-size: clamp(15px, 1.5vw, 19px); max-width: 480px; }
 .snap .phone{ width: clamp(230px, 27vw, 340px); }
 @media(max-width:820px){
-  /* 모바일: 세로로 쌓이되 한 화면 안에 들어오게 컴팩트 (위아래 균등) */
-  .snap{ padding: 64px 0; }
-  .snap .show-row{ gap: 22px; }
-  .snap .phone{ width: min(44vw, 195px); }
-  .snap .show-text h2{ font-size: clamp(22px, 6vw, 30px); margin-bottom: 12px; }
-  .snap .show-text p{ font-size: 14.5px; }
-  .snap .show-text .mini{ margin-top: 14px; gap: 8px; }
-  .snap.trust-bg .trust{ gap: 12px; }
-  .snap.trust-bg .trust-item{ padding: 16px; }
+  /* 모바일: 세로로 쌓이되 한 화면 안에 확실히 들어오게 컴팩트 → 정중앙 정렬 */
+  .snap{ padding: 52px 0; }
+  .snap .show-row{ gap: 16px; }
+  .snap .phone{ width: min(40vw, 168px); }
+  .snap .show-text h2{ font-size: clamp(21px, 5.6vw, 27px); margin-bottom: 8px; }
+  .snap .show-text p{ font-size: 13.5px; line-height: 1.6; }
+  .snap .show-text .eyebrow{ margin-bottom: 8px; }
+  .snap .show-text .mini{ margin-top: 10px; gap: 6px; }
+  .snap .show-text .mini div{ font-size: 13px; }
+  .snap.trust-bg .trust{ gap: 10px; }
+  .snap.trust-bg .trust-item{ padding: 14px; }
+  .snap.trust-bg .sec-sub{ margin-bottom: 24px; }
 }
 /* 화면이 아주 낮으면(가로모드 등) 스냅 해제 — 콘텐츠 잘림 방지 */
 @media(max-height:620px){
