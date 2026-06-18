@@ -210,3 +210,8 @@ footer .bottom{border-top:1px solid #2c302d;padding-top:20px;color:#7d837f;font-
   .kakao-fab{ width: 56px; padding: 0; justify-content: center; right: 16px; bottom: 16px; }
   .kakao-fab span{ display: none; }
 }
+
+/* 사업자 정보 (푸터) */
+.biz-info{ margin-top: 14px; color:#8b918d; font-size:12.5px; line-height:1.8; max-width:520px; }
+.biz-info a{ color:#b7bdb9; text-decoration:underline; }
+.biz-info a:hover{ color:#fff; }
