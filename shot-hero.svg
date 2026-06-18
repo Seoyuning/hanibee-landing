@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f2a4e"/>
+      <stop offset="100%" stop-color="#1a3d6b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8c368"/>
+      <stop offset="100%" stop-color="#b8902e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bg1)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="150" cy="200" r="80" fill="#d4a93d" opacity="0.15"/>
+  <circle cx="930" cy="400" r="120" fill="#d4a93d" opacity="0.1"/>
+  <circle cx="200" cy="1700" r="100" fill="#d4a93d" opacity="0.12"/>
+
+  <!-- Headline -->
+  <text x="540" y="260" text-anchor="middle" font-size="80" font-weight="900" fill="white" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">집에서 받는</text>
+  <text x="540" y="370" text-anchor="middle" font-size="100" font-weight="900" fill="url(#gold)" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">한방 진료</text>
+
+  <!-- Subtitle -->
+  <text x="540" y="460" text-anchor="middle" font-size="38" fill="#d0d8e6" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">우리 동네 한의사부터 방문진료까지</text>
+
+  <!-- Phone frame -->
+  <rect x="240" y="560" width="600" height="1180" rx="70" ry="70" fill="#1a1a1a" stroke="url(#gold)" stroke-width="6"/>
+  <rect x="265" y="585" width="550" height="1130" rx="50" ry="50" fill="#f5f1e8"/>
+
+  <!-- Top notch -->
+  <rect x="460" y="585" width="160" height="32" rx="16" ry="16" fill="#1a1a1a"/>
+
+  <!-- Phone content: App header -->
+  <rect x="265" y="620" width="550" height="110" fill="#0f2a4e"/>
+  <text x="540" y="692" text-anchor="middle" font-size="36" font-weight="700" fill="white" font-family="sans-serif">🐝 하니비</text>
+
+  <!-- Phone content: Hero card -->
+  <rect x="305" y="770" width="470" height="200" rx="20" ry="20" fill="white"/>
+  <rect x="305" y="770" width="470" height="200" rx="20" ry="20" fill="none" stroke="#e8d9a8" stroke-width="2"/>
+  <text x="340" y="835" font-size="28" font-weight="700" fill="#0f2a4e" font-family="sans-serif">안녕하세요 👋</text>
+  <text x="340" y="890" font-size="36" font-weight="800" fill="#0f2a4e" font-family="sans-serif">어떤 증상이 있으세요?</text>
+  <rect x="340" y="915" width="200" height="38" rx="19" ry="19" fill="#d4a93d"/>
+  <text x="440" y="940" text-anchor="middle" font-size="22" font-weight="600" fill="white" font-family="sans-serif">진료 예약하기</text>
+
+  <!-- Phone content: Feature tiles -->
+  <rect x="305" y="1010" width="225" height="140" rx="16" ry="16" fill="white" stroke="#e8d9a8" stroke-width="2"/>
+  <text x="417" y="1070" text-anchor="middle" font-size="50" font-family="sans-serif">📍</text>
+  <text x="417" y="1115" text-anchor="middle" font-size="22" font-weight="600" fill="#0f2a4e" font-family="sans-serif">한의사 찾기</text>
+
+  <rect x="550" y="1010" width="225" height="140" rx="16" ry="16" fill="white" stroke="#e8d9a8" stroke-width="2"/>
+  <text x="662" y="1070" text-anchor="middle" font-size="50" font-family="sans-serif">🏠</text>
+  <text x="662" y="1115" text-anchor="middle" font-size="22" font-weight="600" fill="#0f2a4e" font-family="sans-serif">방문진료</text>
+
+  <rect x="305" y="1180" width="225" height="140" rx="16" ry="16" fill="white" stroke="#e8d9a8" stroke-width="2"/>
+  <text x="417" y="1240" text-anchor="middle" font-size="50" font-family="sans-serif">💬</text>
+  <text x="417" y="1285" text-anchor="middle" font-size="22" font-weight="600" fill="#0f2a4e" font-family="sans-serif">실시간 상담</text>
+
+  <rect x="550" y="1180" width="225" height="140" rx="16" ry="16" fill="white" stroke="#e8d9a8" stroke-width="2"/>
+  <text x="662" y="1240" text-anchor="middle" font-size="50" font-family="sans-serif">📋</text>
+  <text x="662" y="1285" text-anchor="middle" font-size="22" font-weight="600" fill="#0f2a4e" font-family="sans-serif">진료기록</text>
+
+  <!-- Bottom nav -->
+  <rect x="265" y="1630" width="550" height="85" fill="white" stroke="#e5e5e5" stroke-width="1"/>
+  <text x="350" y="1685" text-anchor="middle" font-size="22" fill="#d4a93d" font-weight="700" font-family="sans-serif">● 홈</text>
+  <text x="470" y="1685" text-anchor="middle" font-size="22" fill="#888" font-family="sans-serif">내주변</text>
+  <text x="590" y="1685" text-anchor="middle" font-size="22" fill="#888" font-family="sans-serif">예약</text>
+  <text x="710" y="1685" text-anchor="middle" font-size="22" fill="#888" font-family="sans-serif">채팅</text>
+  <text x="790" y="1685" text-anchor="middle" font-size="22" fill="#888" font-family="sans-serif">프로필</text>
+
+  <!-- Bottom tagline -->
+  <text x="540" y="1830" text-anchor="middle" font-size="34" fill="#d4a93d" font-weight="700" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">바쁜 일상, 집에서 편하게</text>
+</svg>

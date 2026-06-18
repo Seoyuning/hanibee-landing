@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f2a4e"/>
+      <stop offset="100%" stop-color="#1a3d6b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg2)"/>
+
+  <!-- Headline -->
+  <text x="540" y="230" text-anchor="middle" font-size="82" font-weight="900" fill="white" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">내 주변 한의사</text>
+  <text x="540" y="340" text-anchor="middle" font-size="82" font-weight="900" fill="#e8c368" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">한눈에 비교</text>
+  <text x="540" y="420" text-anchor="middle" font-size="36" fill="#d0d8e6" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">별점 · 리뷰 · 전문분야로 선택하세요</text>
+
+  <!-- Phone frame -->
+  <rect x="240" y="500" width="600" height="1240" rx="70" ry="70" fill="#1a1a1a" stroke="#d4a93d" stroke-width="6"/>
+  <rect x="265" y="525" width="550" height="1190" rx="50" ry="50" fill="#e8ecf0"/>
+
+  <rect x="460" y="525" width="160" height="32" rx="16" ry="16" fill="#1a1a1a"/>
+
+  <!-- App header -->
+  <rect x="265" y="560" width="550" height="100" fill="#0f2a4e"/>
+  <text x="540" y="625" text-anchor="middle" font-size="32" font-weight="700" fill="white" font-family="sans-serif">한의사 찾기</text>
+
+  <!-- Map background -->
+  <rect x="265" y="660" width="550" height="720" fill="#d5e1ec"/>
+
+  <!-- Map "roads" (light lines) -->
+  <line x1="265" y1="800" x2="815" y2="770" stroke="white" stroke-width="8"/>
+  <line x1="265" y1="1000" x2="815" y2="1040" stroke="white" stroke-width="6"/>
+  <line x1="400" y1="660" x2="430" y2="1380" stroke="white" stroke-width="7"/>
+  <line x1="600" y1="660" x2="620" y2="1380" stroke="white" stroke-width="5"/>
+
+  <!-- Map pins (3 doctors) -->
+  <circle cx="380" cy="850" r="38" fill="#d4a93d"/>
+  <circle cx="380" cy="850" r="22" fill="white"/>
+  <text x="380" y="862" text-anchor="middle" font-size="28" font-family="sans-serif">🩺</text>
+
+  <circle cx="620" cy="980" r="38" fill="#d4a93d"/>
+  <circle cx="620" cy="980" r="22" fill="white"/>
+  <text x="620" y="992" text-anchor="middle" font-size="28" font-family="sans-serif">🩺</text>
+
+  <circle cx="500" cy="1200" r="38" fill="#e55555"/>
+  <circle cx="500" cy="1200" r="22" fill="white"/>
+  <text x="500" y="1212" text-anchor="middle" font-size="28" font-family="sans-serif">🩺</text>
+
+  <!-- "My location" -->
+  <circle cx="540" cy="1050" r="18" fill="#4285f4"/>
+  <circle cx="540" cy="1050" r="40" fill="#4285f4" opacity="0.2"/>
+
+  <!-- Bottom doctor card -->
+  <rect x="295" y="1410" width="490" height="270" rx="20" ry="20" fill="white"/>
+  <circle cx="375" cy="1500" r="50" fill="#f5f1e8"/>
+  <text x="375" y="1515" text-anchor="middle" font-size="50" font-family="sans-serif">👨‍⚕️</text>
+
+  <text x="445" y="1480" font-size="28" font-weight="700" fill="#0f2a4e" font-family="sans-serif">김한의 한의사</text>
+  <text x="445" y="1515" font-size="22" fill="#666" font-family="sans-serif">동대문 한방병원 · 0.8km</text>
+
+  <!-- Star rating -->
+  <text x="445" y="1555" font-size="22" fill="#d4a93d" font-family="sans-serif">⭐ 4.8</text>
+  <text x="510" y="1555" font-size="20" fill="#888" font-family="sans-serif">(리뷰 127)</text>
+
+  <!-- Specialty tags -->
+  <rect x="320" y="1580" width="130" height="38" rx="19" ry="19" fill="#f5f1e8"/>
+  <text x="385" y="1605" text-anchor="middle" font-size="20" fill="#0f2a4e" font-weight="600" font-family="sans-serif">요통</text>
+
+  <rect x="460" y="1580" width="130" height="38" rx="19" ry="19" fill="#f5f1e8"/>
+  <text x="525" y="1605" text-anchor="middle" font-size="20" fill="#0f2a4e" font-weight="600" font-family="sans-serif">근육통</text>
+
+  <rect x="600" y="1580" width="130" height="38" rx="19" ry="19" fill="#d4a93d"/>
+  <text x="665" y="1605" text-anchor="middle" font-size="20" fill="white" font-weight="600" font-family="sans-serif">방문진료 ✓</text>
+
+  <!-- Tagline -->
+  <text x="540" y="1860" text-anchor="middle" font-size="34" fill="#d4a93d" font-weight="700" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">지도로 가까운 한의사 바로 찾기</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f2a4e"/>
+      <stop offset="100%" stop-color="#1a3d6b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg5)"/>
+
+  <!-- Decorative -->
+  <text x="100" y="190" font-size="100" opacity="0.12" font-family="sans-serif">🏠</text>
+  <text x="900" y="340" font-size="80" opacity="0.12" font-family="sans-serif">💛</text>
+
+  <text x="540" y="230" text-anchor="middle" font-size="82" font-weight="900" fill="white" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">한의사가</text>
+  <text x="540" y="340" text-anchor="middle" font-size="82" font-weight="900" fill="#e8c368" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">집으로 찾아와요</text>
+  <text x="540" y="420" text-anchor="middle" font-size="36" fill="#d0d8e6" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">거동 불편하신 부모님께 딱</text>
+
+  <!-- Phone frame -->
+  <rect x="240" y="500" width="600" height="1240" rx="70" ry="70" fill="#1a1a1a" stroke="#d4a93d" stroke-width="6"/>
+  <rect x="265" y="525" width="550" height="1190" rx="50" ry="50" fill="white"/>
+
+  <rect x="460" y="525" width="160" height="32" rx="16" ry="16" fill="#1a1a1a"/>
+
+  <!-- Header -->
+  <rect x="265" y="560" width="550" height="100" fill="#0f2a4e"/>
+  <text x="540" y="625" text-anchor="middle" font-size="32" font-weight="700" fill="white" font-family="sans-serif">방문진료 예약 완료 ✓</text>
+
+  <!-- Success illustration -->
+  <circle cx="540" cy="800" r="90" fill="#d4a93d" opacity="0.15"/>
+  <circle cx="540" cy="800" r="60" fill="#d4a93d"/>
+  <text x="540" y="820" text-anchor="middle" font-size="60" fill="white" font-family="sans-serif">✓</text>
+
+  <text x="540" y="940" text-anchor="middle" font-size="36" font-weight="800" fill="#0f2a4e" font-family="sans-serif">예약이 확정되었어요</text>
+  <text x="540" y="985" text-anchor="middle" font-size="22" fill="#666" font-family="sans-serif">한의사가 아래 주소로 방문합니다</text>
+
+  <!-- Info card -->
+  <rect x="305" y="1040" width="470" height="500" rx="20" ry="20" fill="#f5f1e8"/>
+
+  <!-- Doctor info row -->
+  <text x="340" y="1095" font-size="22" fill="#888" font-family="sans-serif">담당 한의사</text>
+  <circle cx="380" cy="1150" r="36" fill="white"/>
+  <text x="380" y="1165" text-anchor="middle" font-size="36" font-family="sans-serif">👨‍⚕️</text>
+  <text x="435" y="1145" font-size="28" font-weight="700" fill="#0f2a4e" font-family="sans-serif">김한의 한의사</text>
+  <text x="435" y="1180" font-size="20" fill="#666" font-family="sans-serif">동대문 한방병원</text>
+
+  <!-- Divider -->
+  <line x1="340" y1="1230" x2="740" y2="1230" stroke="#e8d9a8" stroke-width="2"/>
+
+  <!-- Date/time -->
+  <text x="340" y="1275" font-size="22" fill="#888" font-family="sans-serif">📅 방문 일시</text>
+  <text x="340" y="1315" font-size="28" font-weight="700" fill="#0f2a4e" font-family="sans-serif">2026년 4월 16일 (화)</text>
+  <text x="340" y="1355" font-size="28" font-weight="700" fill="#0f2a4e" font-family="sans-serif">오전 10:30</text>
+
+  <line x1="340" y1="1400" x2="740" y2="1400" stroke="#e8d9a8" stroke-width="2"/>
+
+  <!-- Address -->
+  <text x="340" y="1445" font-size="22" fill="#888" font-family="sans-serif">📍 방문 주소</text>
+  <text x="340" y="1485" font-size="26" font-weight="600" fill="#0f2a4e" font-family="sans-serif">서울 성북구 보문로 65</text>
+  <text x="340" y="1520" font-size="22" fill="#666" font-family="sans-serif">101동 1502호 (어머니 댁)</text>
+
+  <!-- Button row -->
+  <rect x="305" y="1580" width="225" height="80" rx="40" ry="40" fill="white" stroke="#d4a93d" stroke-width="2"/>
+  <text x="417" y="1630" text-anchor="middle" font-size="24" font-weight="700" fill="#0f2a4e" font-family="sans-serif">💬 채팅하기</text>
+
+  <rect x="550" y="1580" width="225" height="80" rx="40" ry="40" fill="#d4a93d"/>
+  <text x="662" y="1630" text-anchor="middle" font-size="24" font-weight="700" fill="white" font-family="sans-serif">홈으로</text>
+
+  <text x="540" y="1860" text-anchor="middle" font-size="34" fill="#d4a93d" font-weight="700" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">거동 불편해도 이제 집에서 편하게</text>
+</svg>
