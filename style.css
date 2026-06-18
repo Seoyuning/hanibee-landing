@@ -35,7 +35,7 @@ nav .nav-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
 }
 
 /* HERO */
-.hero{background:linear-gradient(160deg,var(--yellow-1) 0%,var(--yellow-2) 100%);padding:92px 0 104px;text-align:center;position:relative;overflow:hidden;}
+.hero{background:linear-gradient(160deg,var(--yellow-1) 0%,var(--yellow-2) 100%);padding:72px 0 80px;text-align:center;position:relative;overflow:hidden;}
 .hero .badge{display:inline-block;background:rgba(35,68,52,.1);color:var(--pine);font-weight:700;font-size:13px;letter-spacing:.04em;padding:7px 14px;border-radius:999px;margin-bottom:24px;}
 .hero h1{font-size:50px;font-weight:800;color:var(--pine);letter-spacing:-.03em;line-height:1.22;margin-bottom:18px;}
 .hero p{font-size:18px;color:#4A5C50;max-width:540px;margin:0 auto 34px;}
