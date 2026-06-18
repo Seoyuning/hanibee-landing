@@ -1,70 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
-  <defs>
-    <linearGradient id="bg5" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0f2a4e"/>
-      <stop offset="100%" stop-color="#1a3d6b"/>
-    </linearGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920" font-family="'Pretendard','Apple SD Gothic Neo',sans-serif">
+  <rect width="1080" height="1920" fill="#FAFAF7"/>
 
-  <rect width="1080" height="1920" fill="url(#bg5)"/>
+  <!-- 상태바 -->
+  <text x="64" y="62" font-size="32" font-weight="700" fill="#2A2622">9:41</text>
+  <g fill="#2A2622"><rect x="900" y="38" width="34" height="20" rx="3"/><rect x="946" y="32" width="30" height="26" rx="4"/><rect x="986" y="30" width="46" height="22" rx="6"/></g>
 
-  <!-- Decorative -->
-  <text x="100" y="190" font-size="100" opacity="0.12" font-family="sans-serif">🏠</text>
-  <text x="900" y="340" font-size="80" opacity="0.12" font-family="sans-serif">💛</text>
+  <!-- 헤더 -->
+  <text x="64" y="158" font-size="46" font-weight="800" fill="#234434">방문 진행 상황</text>
 
-  <text x="540" y="230" text-anchor="middle" font-size="82" font-weight="900" fill="white" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">한의사가</text>
-  <text x="540" y="340" text-anchor="middle" font-size="82" font-weight="900" fill="#e8c368" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">집으로 찾아와요</text>
-  <text x="540" y="420" text-anchor="middle" font-size="36" fill="#d0d8e6" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">거동 불편하신 부모님께 딱</text>
+  <!-- 지도 영역 -->
+  <rect x="0" y="210" width="1080" height="560" fill="#E6ECE3"/>
+  <g stroke="#D2DBCF" stroke-width="14" fill="none" stroke-linecap="round"><path d="M -20 420 L 1100 520"/><path d="M 420 220 L 540 760"/></g>
+  <!-- 이동 경로 -->
+  <path d="M 300 640 Q 540 360 760 420" stroke="#234434" stroke-width="12" fill="none" stroke-dasharray="6 22" stroke-linecap="round"/>
+  <circle cx="300" cy="640" r="22" fill="#2E6B52" stroke="#fff" stroke-width="6"/>
+  <g transform="translate(760 420)"><circle r="44" fill="#234434"/><text y="16" font-size="44" text-anchor="middle">🚶</text></g>
 
-  <!-- Phone frame -->
-  <rect x="240" y="500" width="600" height="1240" rx="70" ry="70" fill="#1a1a1a" stroke="#d4a93d" stroke-width="6"/>
-  <rect x="265" y="525" width="550" height="1190" rx="50" ry="50" fill="white"/>
+  <!-- 상태 배지 -->
+  <rect x="48" y="700" width="984" height="120" rx="24" fill="#234434"/>
+  <text x="84" y="752" font-size="27" fill="#A9C3B3" font-weight="700">현재 상태</text>
+  <text x="84" y="796" font-size="36" fill="#fff" font-weight="800">한의사가 도착했어요 · 진료 시작</text>
 
-  <rect x="460" y="525" width="160" height="32" rx="16" ry="16" fill="#1a1a1a"/>
+  <!-- 진행 타임라인 -->
+  <rect x="48" y="860" width="984" height="430" rx="32" fill="#fff" stroke="#ECEAE2" stroke-width="2"/>
+  <!-- 라인 -->
+  <line x1="130" y1="950" x2="130" y2="1210" stroke="#E3E1D8" stroke-width="6"/>
+  <line x1="130" y1="950" x2="130" y2="1090" stroke="#234434" stroke-width="6"/>
+  <!-- 단계들 -->
+  <g font-size="32">
+    <circle cx="130" cy="950" r="22" fill="#234434"/><text x="180" y="945" font-weight="700" fill="#2A2622">출발</text><text x="990" y="945" font-size="25" fill="#9AA89F" text-anchor="end">10:32</text>
+    <circle cx="130" cy="1020" r="22" fill="#234434"/><text x="180" y="1015" font-weight="700" fill="#2A2622">도착</text><text x="990" y="1015" font-size="25" fill="#9AA89F" text-anchor="end">10:58</text>
+    <circle cx="130" cy="1090" r="26" fill="#234434" stroke="#C7E0D0" stroke-width="10"/><text x="195" y="1085" font-weight="800" fill="#234434">진료 중</text>
+    <circle cx="130" cy="1210" r="22" fill="#fff" stroke="#D8D6CC" stroke-width="6"/><text x="180" y="1205" fill="#9AA89F">진료 종료</text>
+  </g>
 
-  <!-- Header -->
-  <rect x="265" y="560" width="550" height="100" fill="#0f2a4e"/>
-  <text x="540" y="625" text-anchor="middle" font-size="32" font-weight="700" fill="white" font-family="sans-serif">방문진료 예약 완료 ✓</text>
+  <!-- 한의사 정보 + 도착 사진 -->
+  <rect x="48" y="1330" width="984" height="200" rx="28" fill="#fff" stroke="#ECEAE2" stroke-width="2"/>
+  <rect x="80" y="1362" width="136" height="136" rx="26" fill="#FCEFD2"/><text x="148" y="1452" font-size="68" text-anchor="middle">👨‍⚕️</text>
+  <text x="248" y="1408" font-size="34" font-weight="700" fill="#2A2622">김한결 한의사</text>
+  <text x="248" y="1454" font-size="27" fill="#6B7A70">한결한의원</text>
+  <rect x="740" y="1362" width="136" height="136" rx="22" fill="#E6ECE3"/><text x="808" y="1452" font-size="60" text-anchor="middle">📷</text>
+  <text x="896" y="1408" font-size="24" fill="#B08A3E" font-weight="700">도착 사진</text>
+  <text x="896" y="1448" font-size="22" fill="#9AA89F">10:58 기록</text>
 
-  <!-- Success illustration -->
-  <circle cx="540" cy="800" r="90" fill="#d4a93d" opacity="0.15"/>
-  <circle cx="540" cy="800" r="60" fill="#d4a93d"/>
-  <text x="540" y="820" text-anchor="middle" font-size="60" fill="white" font-family="sans-serif">✓</text>
-
-  <text x="540" y="940" text-anchor="middle" font-size="36" font-weight="800" fill="#0f2a4e" font-family="sans-serif">예약이 확정되었어요</text>
-  <text x="540" y="985" text-anchor="middle" font-size="22" fill="#666" font-family="sans-serif">한의사가 아래 주소로 방문합니다</text>
-
-  <!-- Info card -->
-  <rect x="305" y="1040" width="470" height="500" rx="20" ry="20" fill="#f5f1e8"/>
-
-  <!-- Doctor info row -->
-  <text x="340" y="1095" font-size="22" fill="#888" font-family="sans-serif">담당 한의사</text>
-  <circle cx="380" cy="1150" r="36" fill="white"/>
-  <text x="380" y="1165" text-anchor="middle" font-size="36" font-family="sans-serif">👨‍⚕️</text>
-  <text x="435" y="1145" font-size="28" font-weight="700" fill="#0f2a4e" font-family="sans-serif">김한의 한의사</text>
-  <text x="435" y="1180" font-size="20" fill="#666" font-family="sans-serif">동대문 한방병원</text>
-
-  <!-- Divider -->
-  <line x1="340" y1="1230" x2="740" y2="1230" stroke="#e8d9a8" stroke-width="2"/>
-
-  <!-- Date/time -->
-  <text x="340" y="1275" font-size="22" fill="#888" font-family="sans-serif">📅 방문 일시</text>
-  <text x="340" y="1315" font-size="28" font-weight="700" fill="#0f2a4e" font-family="sans-serif">2026년 4월 16일 (화)</text>
-  <text x="340" y="1355" font-size="28" font-weight="700" fill="#0f2a4e" font-family="sans-serif">오전 10:30</text>
-
-  <line x1="340" y1="1400" x2="740" y2="1400" stroke="#e8d9a8" stroke-width="2"/>
-
-  <!-- Address -->
-  <text x="340" y="1445" font-size="22" fill="#888" font-family="sans-serif">📍 방문 주소</text>
-  <text x="340" y="1485" font-size="26" font-weight="600" fill="#0f2a4e" font-family="sans-serif">서울 성북구 보문로 65</text>
-  <text x="340" y="1520" font-size="22" fill="#666" font-family="sans-serif">101동 1502호 (어머니 댁)</text>
-
-  <!-- Button row -->
-  <rect x="305" y="1580" width="225" height="80" rx="40" ry="40" fill="white" stroke="#d4a93d" stroke-width="2"/>
-  <text x="417" y="1630" text-anchor="middle" font-size="24" font-weight="700" fill="#0f2a4e" font-family="sans-serif">💬 채팅하기</text>
-
-  <rect x="550" y="1580" width="225" height="80" rx="40" ry="40" fill="#d4a93d"/>
-  <text x="662" y="1630" text-anchor="middle" font-size="24" font-weight="700" fill="white" font-family="sans-serif">홈으로</text>
-
-  <text x="540" y="1860" text-anchor="middle" font-size="34" fill="#d4a93d" font-weight="700" font-family="'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif">거동 불편해도 이제 집에서 편하게</text>
+  <!-- 하단 네비 -->
+  <rect x="0" y="1772" width="1080" height="148" fill="#fff"/>
+  <rect x="0" y="1772" width="1080" height="2" fill="#ECEAE2"/>
+  <g text-anchor="middle">
+    <text x="108" y="1838" font-size="44">🏠</text><text x="108" y="1882" font-size="22" font-weight="700" fill="#234434">홈</text>
+    <text x="324" y="1838" font-size="44">📍</text><text x="324" y="1882" font-size="22" fill="#9AA89F">찾기</text>
+    <text x="540" y="1838" font-size="44">🗓️</text><text x="540" y="1882" font-size="22" fill="#9AA89F">예약</text>
+    <text x="756" y="1838" font-size="44">💬</text><text x="756" y="1882" font-size="22" fill="#9AA89F">채팅</text>
+    <text x="972" y="1838" font-size="44">🐝</text><text x="972" y="1882" font-size="22" fill="#9AA89F">내 정보</text>
+  </g>
 </svg>
