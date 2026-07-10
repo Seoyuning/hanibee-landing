@@ -215,3 +215,16 @@ footer .bottom{border-top:1px solid #2c302d;padding-top:20px;color:#7d837f;font-
 .biz-info{ margin-top: 14px; color:#8b918d; font-size:12.5px; line-height:1.8; max-width:520px; }
 .biz-info a{ color:#b7bdb9; text-decoration:underline; }
 .biz-info a:hover{ color:#fff; }
+
+/* 글자 크기 조절 컨트롤 (a11y.js가 주입) — 좌하단 고정, 카카오 FAB(우하단)와 겹치지 않음 */
+.a11y-font{position:fixed;left:14px;bottom:16px;z-index:60;display:flex;align-items:center;gap:6px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 10px;
+  box-shadow:0 4px 16px rgba(0,0,0,.12);}
+.a11y-font-label{font-size:12px;color:var(--muted);font-weight:700;white-space:nowrap;}
+.a11y-font-btn{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:#fff;
+  color:var(--pine);font-weight:800;line-height:1;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;transition:all .15s;}
+.a11y-font-btn:hover{border-color:var(--pine-soft);}
+.a11y-font-btn[aria-pressed="true"]{border-color:var(--pine);background:var(--pine);color:#fff;}
+@media(max-width:520px){.a11y-font{left:10px;bottom:12px;gap:4px;padding:5px 8px;}
+  .a11y-font-label{display:none;}}
