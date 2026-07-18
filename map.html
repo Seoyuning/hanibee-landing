@@ -223,7 +223,7 @@
             center: new naver.maps.LatLng(center.lat, center.lng),
             zoom: cfg.zoom || 14,
             draggable: true, pinchZoom: true, scrollWheel: true,
-            zoomControl: true,
+            zoomControl: cfg.zoomControl !== false,
             zoomControlOptions: { position: naver.maps.Position.TOP_RIGHT },
           });
 
