@@ -145,10 +145,11 @@
             routeLine = new naver.maps.Polyline({
               map: map,
               path: path.map(function (p) { return new naver.maps.LatLng(p.lat, p.lng); }),
-              strokeColor: "#2E6B52",
-              strokeWeight: 4,
-              strokeOpacity: 0.65,
-              strokeStyle: "shortdash",
+              strokeColor: "#1F7A4D",
+              strokeWeight: 6,
+              strokeOpacity: 0.95,
+              strokeLineCap: "round",
+              strokeLineJoin: "round",
             });
             var bounds = new naver.maps.LatLngBounds();
             path.forEach(function (p) { bounds.extend(new naver.maps.LatLng(p.lat, p.lng)); });
