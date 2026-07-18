@@ -14,20 +14,6 @@
     <style>
       html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #eef0f2; }
       #map { width: 100%; height: 100%; }
-      .pin-clinic, .pin-selected { position: relative; }
-      .pin-dot {
-        width: 40px; height: 40px; border-radius: 9999px; display: flex; align-items: center;
-        justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.25); border: 2px solid #fff;
-        font-size: 18px; color: #fff;
-      }
-      .pin-clinic .pin-dot { background: #C99A2E; }
-      .pin-selected .pin-dot { background: #ef4444; animation: bounce 1s infinite; }
-      .pin-tail {
-        position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
-        width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent;
-      }
-      .pin-clinic .pin-tail { border-top: 7px solid #C99A2E; }
-      .pin-selected .pin-tail { border-top: 7px solid #ef4444; }
       .pin-current {
         width: 22px; height: 22px; border-radius: 9999px; background: #3b82f6;
         border: 3px solid #fff; box-shadow: 0 0 0 2px rgba(59,130,246,.35); animation: pulse 1.6s infinite;
@@ -54,6 +40,7 @@
         var map = null;
         var clinicMarkers = [];
         var selectedMarker = null;
+        var routeLine = null;
         var currentMarker = null;
         var openInfoWindow = null;
         var didFitBounds = false;
@@ -64,18 +51,27 @@
           send({ source: "hanibee-map", type: "authFailure", origin: location.origin });
         };
 
-        function clinicIcon() {
+        // 앱(NaverMapWeb)과 동일한 마커 스타일 — 흰 원 + 파인 테두리 + 이모지(기본 🏥)
+        function markerIcon(emoji) {
           return {
             content:
-              '<div class="pin-clinic"><div class="pin-dot">🏥</div><div class="pin-tail"></div></div>',
-            anchor: new naver.maps.Point(20, 45),
+              '<div style="position:relative;width:40px;height:48px;">' +
+              '<div style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:36px;height:36px;background:#fff;border:2.5px solid #2E6B52;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,0.25);">' +
+              esc(emoji || "🏥") +
+              "</div>" +
+              '<div style="position:absolute;left:50%;top:35px;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:10px solid #2E6B52;"></div>' +
+              "</div>",
+            anchor: new naver.maps.Point(20, 46),
           };
         }
         function selectedIcon() {
           return {
             content:
-              '<div class="pin-selected"><div class="pin-dot">📍</div><div class="pin-tail"></div></div>',
-            anchor: new naver.maps.Point(20, 45),
+              '<div style="position:relative;width:26px;height:34px;">' +
+              '<div style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:22px;height:22px;background:#E5483F;border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.35);"></div>' +
+              '<div style="position:absolute;left:50%;top:20px;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:11px solid #E5483F;"></div>' +
+              "</div>",
+            anchor: new naver.maps.Point(13, 32),
           };
         }
         function currentIcon() {
@@ -98,7 +94,7 @@
               position: new naver.maps.LatLng(d.lat, d.lng),
               map: map,
               title: d.title || "",
-              icon: clinicIcon(),
+              icon: markerIcon(d.emoji),
             });
             var info = null;
             if (d.info) {
@@ -139,6 +135,24 @@
               map: map,
               icon: selectedIcon(),
             });
+          }
+        }
+
+        // 경로선 (한의사 이동 경로 등) — 앱 웹 구현과 동일 스타일 + 전체 보이게 화면 맞춤
+        function setPath(path) {
+          if (routeLine) { routeLine.setMap(null); routeLine = null; }
+          if (path && path.length >= 2) {
+            routeLine = new naver.maps.Polyline({
+              map: map,
+              path: path.map(function (p) { return new naver.maps.LatLng(p.lat, p.lng); }),
+              strokeColor: "#2E6B52",
+              strokeWeight: 4,
+              strokeOpacity: 0.65,
+              strokeStyle: "shortdash",
+            });
+            var bounds = new naver.maps.LatLngBounds();
+            path.forEach(function (p) { bounds.extend(new naver.maps.LatLng(p.lat, p.lng)); });
+            map.fitBounds(bounds, { top: 50, right: 50, bottom: 50, left: 50 });
           }
         }
 
@@ -240,6 +254,7 @@
               if (map && data.center) map.setCenter(new naver.maps.LatLng(data.center.lat, data.center.lng));
               return;
             case "setSelected": if (map) setSelected(data.selectedPosition); return;
+            case "setPath": if (map) setPath(data.path); return;
             case "setCurrentLocation": if (map) setCurrentLocation(data.location); return;
             case "geocode": doGeocode(data.reqId, data.query); return;
             case "reverseGeocode": doReverseGeocode(data.reqId, data.lat, data.lng); return;
