@@ -138,8 +138,8 @@
           }
         }
 
-        // 경로선 (한의사 이동 경로 등) — 앱 웹 구현과 동일 스타일 + 전체 보이게 화면 맞춤
-        function setPath(path) {
+        // 경로선 (한의사 이동 경로 등) — 앱 웹 구현과 동일 스타일. fit=false면 화면 맞춤 생략(내비 모드)
+        function setPath(path, fit) {
           if (routeLine) { routeLine.setMap(null); routeLine = null; }
           if (path && path.length >= 2) {
             routeLine = new naver.maps.Polyline({
@@ -151,9 +151,11 @@
               strokeLineCap: "round",
               strokeLineJoin: "round",
             });
-            var bounds = new naver.maps.LatLngBounds();
-            path.forEach(function (p) { bounds.extend(new naver.maps.LatLng(p.lat, p.lng)); });
-            map.fitBounds(bounds, { top: 50, right: 50, bottom: 50, left: 50 });
+            if (fit !== false) {
+              var bounds = new naver.maps.LatLngBounds();
+              path.forEach(function (p) { bounds.extend(new naver.maps.LatLng(p.lat, p.lng)); });
+              map.fitBounds(bounds, { top: 50, right: 50, bottom: 50, left: 50 });
+            }
           }
         }
 
@@ -255,7 +257,7 @@
               if (map && data.center) map.setCenter(new naver.maps.LatLng(data.center.lat, data.center.lng));
               return;
             case "setSelected": if (map) setSelected(data.selectedPosition); return;
-            case "setPath": if (map) setPath(data.path); return;
+            case "setPath": if (map) setPath(data.path, data.fit); return;
             case "setCurrentLocation": if (map) setCurrentLocation(data.location); return;
             case "geocode": doGeocode(data.reqId, data.query); return;
             case "reverseGeocode": doReverseGeocode(data.reqId, data.lat, data.lng); return;
