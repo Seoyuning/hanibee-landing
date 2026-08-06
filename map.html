@@ -222,6 +222,8 @@
 
         function initMap(cfg) {
           var center = cfg.center || { lat: 37.5665, lng: 126.978 };
+          // fitMarkers=false — 마커 전체 맞춤 없이 지정 center/zoom 유지 (내 위치 중심 고정 반경용)
+          if (cfg.fitMarkers === false) didFitBounds = true;
           map = new naver.maps.Map("map", {
             center: new naver.maps.LatLng(center.lat, center.lng),
             zoom: cfg.zoom || 14,
