@@ -8,40 +8,32 @@
   <!-- 헤더 -->
   <text x="64" y="158" font-size="46" font-weight="800" fill="#234434">방문 진행 상황</text>
 
-  <!-- 지도 영역 -->
-  <rect x="0" y="210" width="1080" height="560" fill="#E6ECE3"/>
-  <g stroke="#D2DBCF" stroke-width="14" fill="none" stroke-linecap="round"><path d="M -20 420 L 1100 520"/><path d="M 420 220 L 540 760"/></g>
-  <!-- 이동 경로 -->
-  <path d="M 300 640 Q 540 360 760 420" stroke="#234434" stroke-width="12" fill="none" stroke-dasharray="6 22" stroke-linecap="round"/>
-  <circle cx="300" cy="640" r="22" fill="#2E6B52" stroke="#fff" stroke-width="6"/>
-  <g transform="translate(760 420)"><circle r="44" fill="#234434"/><text y="16" font-size="44" text-anchor="middle">🚶</text></g>
-
   <!-- 상태 배지 -->
-  <rect x="48" y="700" width="984" height="120" rx="24" fill="#234434"/>
-  <text x="84" y="752" font-size="27" fill="#A9C3B3" font-weight="700">현재 상태</text>
-  <text x="84" y="796" font-size="36" fill="#fff" font-weight="800">한의사가 도착했어요 · 진료 시작</text>
+  <rect x="48" y="240" width="984" height="140" rx="24" fill="#234434"/>
+  <text x="84" y="298" font-size="27" fill="#A9C3B3" font-weight="700">현재 상태</text>
+  <text x="84" y="346" font-size="36" fill="#fff" font-weight="800">한의사가 도착했어요 · 진료 시작</text>
 
   <!-- 진행 타임라인 -->
-  <rect x="48" y="860" width="984" height="430" rx="32" fill="#fff" stroke="#ECEAE2" stroke-width="2"/>
+  <rect x="48" y="450" width="984" height="680" rx="32" fill="#fff" stroke="#ECEAE2" stroke-width="2"/>
   <!-- 라인 -->
-  <line x1="130" y1="950" x2="130" y2="1210" stroke="#E3E1D8" stroke-width="6"/>
-  <line x1="130" y1="950" x2="130" y2="1090" stroke="#234434" stroke-width="6"/>
+  <line x1="130" y1="560" x2="130" y2="980" stroke="#E3E1D8" stroke-width="6"/>
+  <line x1="130" y1="560" x2="130" y2="820" stroke="#234434" stroke-width="6"/>
   <!-- 단계들 -->
   <g font-size="32">
-    <circle cx="130" cy="950" r="22" fill="#234434"/><text x="180" y="945" font-weight="700" fill="#2A2622">출발</text><text x="990" y="945" font-size="25" fill="#9AA89F" text-anchor="end">10:32</text>
-    <circle cx="130" cy="1020" r="22" fill="#234434"/><text x="180" y="1015" font-weight="700" fill="#2A2622">도착</text><text x="990" y="1015" font-size="25" fill="#9AA89F" text-anchor="end">10:58</text>
-    <circle cx="130" cy="1090" r="26" fill="#234434" stroke="#C7E0D0" stroke-width="10"/><text x="195" y="1085" font-weight="800" fill="#234434">진료 중</text>
-    <circle cx="130" cy="1210" r="22" fill="#fff" stroke="#D8D6CC" stroke-width="6"/><text x="180" y="1205" fill="#9AA89F">진료 종료</text>
+    <circle cx="130" cy="560" r="22" fill="#234434"/><text x="180" y="555" font-weight="700" fill="#2A2622">출발</text><text x="990" y="555" font-size="25" fill="#9AA89F" text-anchor="end">10:32</text>
+    <circle cx="130" cy="690" r="22" fill="#234434"/><text x="180" y="685" font-weight="700" fill="#2A2622">도착</text><text x="990" y="685" font-size="25" fill="#9AA89F" text-anchor="end">10:58</text>
+    <circle cx="130" cy="820" r="26" fill="#234434" stroke="#C7E0D0" stroke-width="10"/><text x="195" y="815" font-weight="800" fill="#234434">진료 중</text>
+    <circle cx="130" cy="980" r="22" fill="#fff" stroke="#D8D6CC" stroke-width="6"/><text x="180" y="975" fill="#9AA89F">진료 종료</text>
   </g>
 
   <!-- 한의사 정보 + 도착 사진 -->
-  <rect x="48" y="1330" width="984" height="200" rx="28" fill="#fff" stroke="#ECEAE2" stroke-width="2"/>
-  <rect x="80" y="1362" width="136" height="136" rx="26" fill="#FCEFD2"/><text x="148" y="1452" font-size="68" text-anchor="middle">👨‍⚕️</text>
-  <text x="248" y="1408" font-size="34" font-weight="700" fill="#2A2622">김한결 한의사</text>
-  <text x="248" y="1454" font-size="27" fill="#6B7A70">한결한의원</text>
-  <rect x="740" y="1362" width="136" height="136" rx="22" fill="#E6ECE3"/><text x="808" y="1452" font-size="60" text-anchor="middle">📷</text>
-  <text x="896" y="1408" font-size="24" fill="#B08A3E" font-weight="700">도착 사진</text>
-  <text x="896" y="1448" font-size="22" fill="#9AA89F">10:58 기록</text>
+  <rect x="48" y="1200" width="984" height="200" rx="28" fill="#fff" stroke="#ECEAE2" stroke-width="2"/>
+  <rect x="80" y="1232" width="136" height="136" rx="26" fill="#FCEFD2"/><text x="148" y="1322" font-size="68" text-anchor="middle">👨‍⚕️</text>
+  <text x="248" y="1278" font-size="34" font-weight="700" fill="#2A2622">김한결 한의사</text>
+  <text x="248" y="1324" font-size="27" fill="#6B7A70">한결한의원</text>
+  <rect x="740" y="1232" width="136" height="136" rx="22" fill="#E6ECE3"/><text x="808" y="1322" font-size="60" text-anchor="middle">📷</text>
+  <text x="896" y="1278" font-size="24" fill="#B08A3E" font-weight="700">도착 사진</text>
+  <text x="896" y="1318" font-size="22" fill="#9AA89F">10:58 기록</text>
 
   <!-- 하단 네비 -->
   <rect x="0" y="1772" width="1080" height="148" fill="#fff"/>
