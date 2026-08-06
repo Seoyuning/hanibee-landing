@@ -258,6 +258,7 @@
             case "setCenter":
               if (map && data.center) map.setCenter(new naver.maps.LatLng(data.center.lat, data.center.lng));
               return;
+            case "setZoom": if (map && typeof data.zoom === "number") map.setZoom(data.zoom); return;
             case "setSelected": if (map) setSelected(data.selectedPosition); return;
             case "setPath": if (map) setPath(data.path, data.fit); return;
             case "setCurrentLocation": if (map) setCurrentLocation(data.location); return;
