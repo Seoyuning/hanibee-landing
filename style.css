@@ -104,7 +104,7 @@ nav .nav-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
 @media(max-width:600px){.notice-row{flex-direction:column;gap:6px;}}
 
 /* SUPPORT */
-.support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:940px;margin:0 auto;}
+.support-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:940px;margin:0 auto;}
 .support-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px 26px;text-align:center;}
 .support-card .ic{width:56px;height:56px;border-radius:15px;background:linear-gradient(160deg,var(--yellow-1),var(--yellow-2));display:flex;align-items:center;justify-content:center;font-size:27px;margin:0 auto 16px;}
 .support-card h3{font-size:18px;color:var(--pine);margin-bottom:8px;}
